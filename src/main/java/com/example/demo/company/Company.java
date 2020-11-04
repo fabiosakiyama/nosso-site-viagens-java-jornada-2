@@ -14,12 +14,13 @@ public class Company {
     @Column(unique = true)
     private String name;
 
-    private LocalDate createdAt = LocalDate.now();
+    private final LocalDate createdAt = LocalDate.now();
 
     @ManyToOne
     private Country country;
-    
-    public Company(String nome) {
+
+    public Company(String nome, Country country) {
         this.name = nome;
+        this.country = country;
     }
 }
