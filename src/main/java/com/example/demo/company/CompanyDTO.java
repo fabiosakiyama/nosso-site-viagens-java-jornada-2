@@ -2,6 +2,7 @@ package com.example.demo.company;
 
 import com.example.demo.country.Country;
 
+import com.example.demo.country.CountryRepository;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -21,7 +22,9 @@ public class CompanyDTO {
         return this.countryId;
     }
 
-    public Company toModel(Country country) {
+    public Company toModel(CountryRepository countryRepository) {
+        Country country=countryRepository.findById(countryId)
+            .orElseThrow(RuntimeException::new);
         return new Company(this.nome, country);
     }
 }

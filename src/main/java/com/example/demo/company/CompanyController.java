@@ -25,10 +25,7 @@ public class CompanyController {
 
     @PostMapping
     public ResponseEntity<Void> creatCompany(@Valid @RequestBody CompanyDTO companyDTO) {
-        final Country country = countryRepository.findById(companyDTO.getCountryId())
-                .orElseThrow(RuntimeException::new);
-
-        companyRepository.save(companyDTO.toModel(country));
+        companyRepository.save(companyDTO.toModel(countryRepository));
 
         return (ResponseEntity) ResponseEntity.status(HttpStatus.CREATED);
     }
