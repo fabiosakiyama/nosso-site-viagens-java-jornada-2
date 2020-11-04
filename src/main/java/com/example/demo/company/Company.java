@@ -1,12 +1,11 @@
-package com.example.demo.country;
+package com.example.demo.company;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.demo.country.Country;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
-public class Country {
+public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +16,10 @@ public class Country {
 
     private LocalDate createdAt = LocalDate.now();
 
-    public Country(String nome) {
+    @ManyToOne
+    private Country country;
+    
+    public Company(String nome) {
         this.name = nome;
     }
 }
