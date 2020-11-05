@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Pais {
 	
@@ -16,8 +19,9 @@ public class Pais {
 	
 	@NotNull
 	private String nome;
-
-	public Pais(@NotNull String nome) {
+	
+	@JsonCreator
+	public Pais(@NotNull @JsonProperty("nome") String nome) {
 		this.nome = nome;
 	}
 }
