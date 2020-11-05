@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,7 +23,7 @@ public class Companhia {
     @Column(nullable = false)
     private LocalDateTime instanteCriacao;
 
-    @OneToMany
+    @ManyToOne
     private Pais pais;
 
     public Companhia(String nome, Pais pais) {
