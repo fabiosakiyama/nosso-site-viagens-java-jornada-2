@@ -1,9 +1,6 @@
 package com.example.demo.pais;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -18,10 +15,10 @@ public class Pais {
 	private Long id;
 	
 	@NotNull
+	@Column(nullable = false)
 	private String nome;
-	
-	@JsonCreator
-	public Pais(@NotNull @JsonProperty("nome") String nome) {
+
+	public Pais(@NotNull String nome) {
 		this.nome = nome;
 	}
 }

@@ -1,6 +1,7 @@
 package com.example.demo.pais;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,9 @@ public class PaisController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Pais pais) {
-        entityManager.persist(pais);
+    @Transactional
+    public ResponseEntity<?> save(@RequestBody PaisForm pais) {
+        entityManager.persist(pais.toModel());
         return ResponseEntity.status(201).build();
     }
 }
