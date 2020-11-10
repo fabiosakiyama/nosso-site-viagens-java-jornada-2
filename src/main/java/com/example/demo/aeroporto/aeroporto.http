@@ -1,0 +1,9 @@
+POST http://localhost:8080/aeroportos
+Content-Type: application/json
+
+{
+  "nome": "Aeroporto2",
+  "paisId": 1
+}
+
+###

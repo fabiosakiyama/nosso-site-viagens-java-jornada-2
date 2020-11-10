@@ -18,7 +18,7 @@ public class NovoAeroportoRequest {
 
 	public Aeroporto toModel(EntityManager entityManager) {
 		Pais pais = entityManager.find(Pais.class, this.paisId);
-		Assert.notNull(pais, "Passe um país válido, cara!");
+		Assert.notNull(pais, "Passe um paï¿½s vï¿½lido, cara!");
 		return new Aeroporto(nome, pais);
 	}
 
@@ -28,5 +28,9 @@ public class NovoAeroportoRequest {
 
 	public void setPaisId(Long paisId) {
 		this.paisId = paisId;
+	}
+
+	public String getNome() {
+		return this.nome;
 	}
 }
