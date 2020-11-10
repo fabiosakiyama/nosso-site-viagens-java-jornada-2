@@ -22,7 +22,7 @@ public class PaisController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Void> save(@RequestBody PaisForm pais) {
+    public ResponseEntity<Void> save(@RequestBody NovoPaisRequest pais) {
         entityManager.persist(pais.toModel());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

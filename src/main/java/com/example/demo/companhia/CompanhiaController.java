@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityManager;
 
 @RestController
-@RequestMapping("/companhia")
+@RequestMapping("/companhias")
 public class CompanhiaController {
 
     private EntityManager manager;
@@ -20,7 +20,7 @@ public class CompanhiaController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> save( @RequestBody CompanhiaForm companhiaForm){
+    public ResponseEntity<Void> save( @RequestBody NovaCompanhiaRequest companhiaForm){
         this.manager.persist(companhiaForm.toModel(this.manager));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

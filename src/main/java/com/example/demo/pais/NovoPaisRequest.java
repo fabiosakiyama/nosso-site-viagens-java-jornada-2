@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class PaisForm {
+public class NovoPaisRequest {
 
     @NotBlank
     private String nome;
@@ -16,7 +16,7 @@ public class PaisForm {
     }
 
     @JsonCreator
-    public PaisForm(@NotNull @JsonProperty("nome") String nome) {
+    public NovoPaisRequest(@NotNull @JsonProperty("nome") String nome) {
         this.nome = nome;
     }
 }
