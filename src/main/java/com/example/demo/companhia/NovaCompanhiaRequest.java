@@ -15,8 +15,11 @@ public class NovaCompanhiaRequest {
     @NotNull
     @Positive
     private Long idPais;
+    
+    @Deprecated
+    public NovaCompanhiaRequest() {}
 
-    public NovaCompanhiaRequest(@NotBlank String nome, @NotNull @Positive Long idPais) {
+	public NovaCompanhiaRequest(@NotBlank String nome, @NotNull @Positive Long idPais) {
         this.nome = nome;
         this.idPais = idPais;
     }
@@ -25,4 +28,20 @@ public class NovaCompanhiaRequest {
         Pais pais = entityManager.find(Pais.class, this.idPais);
         return new Companhia(this.nome, pais);
     }
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Long getIdPais() {
+		return idPais;
+	}
+
+	public void setIdPais(Long idPais) {
+		this.idPais = idPais;
+	}
 }
