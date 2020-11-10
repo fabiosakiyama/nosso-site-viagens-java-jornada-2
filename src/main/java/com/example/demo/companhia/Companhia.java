@@ -26,6 +26,9 @@ public class Companhia {
     @ManyToOne
     private Pais pais;
 
+    @Deprecated
+    public Companhia(){}
+
     public Companhia(String nome, Pais pais) {
         this.nome = nome;
         this.instanteCriacao = LocalDateTime.now();

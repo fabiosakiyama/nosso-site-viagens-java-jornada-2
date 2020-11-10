@@ -1,0 +1,18 @@
+POST http://localhost:8080/pais
+Content-Type: application/json
+
+{
+  "nome": "brasil"
+}
+
+###
+POST http://localhost:8080/companhias
+Content-Type: application/json
+
+{
+  "nome": "Companhia",
+  "idPais": 1
+}
+
+###
+

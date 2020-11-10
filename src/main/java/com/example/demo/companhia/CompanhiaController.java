@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @RestController
 @RequestMapping("/companhias")
@@ -20,6 +21,7 @@ public class CompanhiaController {
     }
 
     @PostMapping
+    @Transactional
     public ResponseEntity<Void> save( @RequestBody NovaCompanhiaRequest companhiaForm){
         this.manager.persist(companhiaForm.toModel(this.manager));
         return ResponseEntity.status(HttpStatus.CREATED).build();

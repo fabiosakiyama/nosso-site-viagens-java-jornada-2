@@ -18,6 +18,9 @@ public class Pais {
 	@Column(nullable = false)
 	private String nome;
 
+	@Deprecated
+	public Pais(){}
+
 	public Pais(@NotNull String nome) {
 		this.nome = nome;
 	}

@@ -16,6 +16,11 @@ public class NovaCompanhiaRequest {
     @Positive
     private Long idPais;
 
+    public NovaCompanhiaRequest(@NotBlank String nome, @NotNull @Positive Long idPais) {
+        this.nome = nome;
+        this.idPais = idPais;
+    }
+
     public Companhia toModel(EntityManager entityManager) {
         Pais pais = entityManager.find(Pais.class, this.idPais);
         return new Companhia(this.nome, pais);
