@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/aereoportos")
+@RequestMapping("/aeroportos")
 public class AeroportoController {
 	
 	private EntityManager entityManager;
@@ -23,7 +23,7 @@ public class AeroportoController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<Aeroporto> save(@Valid @RequestBody NovoAeroportoRequest request){
-		Aeroporto aeroporto = NovoAeroportoRequest.toModel();
+		Aeroporto aeroporto = request.toModel(entityManager);
 		entityManager.persist(aeroporto);
 		return ResponseEntity.ok(aeroporto);
 	}
