@@ -6,19 +6,24 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/companhias")
 public class CompanhiaController {
 
     private EntityManager manager;
+    private NomeUnicoCompanhiaValidator nomeUnicoCompanhiaValidator;
 
-    public CompanhiaController(EntityManager manager) {
+    public CompanhiaController(EntityManager manager, NomeUnicoCompanhiaValidator nomeUnicoCompanhiaValidator) {
         this.manager = manager;
+        this.nomeUnicoCompanhiaValidator = nomeUnicoCompanhiaValidator;
+    }
+
+    @InitBinder
+    public void init(WebDataBinder binder) {
+        binder.addValidators(nomeUnicoCompanhiaValidator);
     }
 
     @PostMapping
